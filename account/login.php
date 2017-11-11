@@ -58,15 +58,12 @@ if(isset($_SESSION['email'])){
                         </nav>
                       </div>
                     </header>
-                    <!-- <div class="mdl-layout__drawer">
+                    <div class="mdl-layout__drawer">
                       <span class="mdl-layout-title">Title</span>
                       <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="./register">REGISTER</a>
                       </nav>
-                    </div> -->
+                    </div>
                     <main class="mdl-layout__content">
                       <div class="page-content">
 
