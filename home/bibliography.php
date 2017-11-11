@@ -6,8 +6,8 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 
-$bid = htmlspecialchars($_GET["bid"]);
-$viewQry = "SELECT * FROM bibliographies WHERE id = '$bid'";
+$bid = htmlspecialchars($_GET["id"]);
+$viewQry = "SELECT * FROM bibliographies WHERE bid = '$bid'";
 
 ?>
 
@@ -47,7 +47,7 @@ $viewQry = "SELECT * FROM bibliographies WHERE id = '$bid'";
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <?php echo($bid); ?>
+                    <?php echo(htmlspecialchars($_GET["id"])); ?>
                 </div>
             </main>
         </div>
