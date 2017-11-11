@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <main class="mdl-layout__content">
 
       <!-- REGISTER CARD START -->
-      <div class="mdl-card mdl-shadow--4dp">
+      <div id="cardRegister" class="mdl-card mdl-shadow--4dp">
 
         <!-- CARD TITLE START -->
         <div class="mdl-card__title mdl-color--primary">
