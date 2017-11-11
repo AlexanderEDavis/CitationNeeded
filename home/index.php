@@ -4,6 +4,17 @@
 require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
 
+$email = $_SESSION['email'];
+
+$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email";
+$bibSql_getBib = mysqli_query($conn,$bibQry_getBib);
+
+$bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
+$bibSql_newBib = mysqli_query($conn,$bibQry_newBib);
+
+$bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
+$bibSql_delBib = mysqli_query($conn,$bibQry_delBib);
+
 ?>
 
 <html>
@@ -17,14 +28,17 @@ require('../conf/sescheck.php');
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
                     <div class="mdl-layout-spacer"></div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                          <a class="mdl-navigation__link" href="#">Create Bibliography</a>
+                        </nav>
+                    <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
                             <i class="material-icons">search</i>
                         </label>
                         <div class="mdl-textfield__expandable-holder">
                             <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </header>
         <div class="mdl-layout__drawer">
@@ -36,7 +50,10 @@ require('../conf/sescheck.php');
             </nav>
         </div>
             <main class="mdl-layout__content">
-                <div class="page-content"><!-- Your content goes here --></div>
+                <div class="page-content">
+                    <!-- Get User's Bibs -->
+                    <!-- Create Delete buttons on each card -->
+                </div>
             </main>
         </div>
     </body>
