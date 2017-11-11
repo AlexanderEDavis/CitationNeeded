@@ -3,7 +3,6 @@
 //include both the dbconnect and sescheck files
 require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
-require('../scripts/dialogs.php');
 
 $email = $_SESSION['email'];
 $name = $_SESSION['bibName'];
