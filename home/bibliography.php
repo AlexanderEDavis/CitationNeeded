@@ -16,6 +16,11 @@ $error = "You do not have permissions to read this bibliography.";
 // if ($results == 0) {
 //   echo "You do not have permissions to read this bibliography.";
 // }
+
+    function delBib() {
+        
+    }
+
 ?>
 
 <html>

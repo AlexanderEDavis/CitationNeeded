@@ -15,6 +15,11 @@ $bibSql_newBib = mysqli_query($conn,$bibQry_newBib) or die("Could not create bib
 $bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
 $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
 
+function delBib($name) {
+    $bibSql_delBib(name);
+    parent.window.location.reload();
+};
+
 ?>
 
 <html>
