@@ -6,8 +6,8 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 
-$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email";
-$bibSql_getBib = mysqli_query($conn,$bibQry_getBib);
+$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email'";
+$bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results.".mysqli_error($conn));
 
 $bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
 $bibSql_newBib = mysqli_query($conn,$bibQry_newBib);
@@ -54,6 +54,11 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib);
                 <div class="page-content">
                     <!-- Get User's Bibs -->
                     <!-- Create Delete buttons on each card -->
+
+                   <?php while ($row = $bibSql_getBib->fetch_assoc()) {
+                       print_r($row);
+                    }
+                    ?>
                 </div>
             </main>
         </div>
