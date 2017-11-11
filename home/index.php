@@ -6,7 +6,7 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 
-$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email' ORDER BY 'name' ASC";
+$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email' ORDER BY name ASC";
 $bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results. ".mysqli_error($conn));
 
 $bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
