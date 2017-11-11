@@ -6,6 +6,7 @@ require('../conf/sescheck.php');
 require('../scripts/dialogs.php');
 
 $email = $_SESSION['email'];
+$name = $_SESSION['bibName'];
 
 $bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email' ORDER BY name ASC";
 $bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results. ".mysqli_error($conn));
@@ -25,13 +26,6 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
         <title>Home ~ Citation Needed</title>
     </head>
     <body>
-
-        <script>
-            function bibOpen(name) {
-                <?php $_SESSION['bibName'] = name; ?>
-            };
-        </script>
-
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
@@ -61,25 +55,7 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <!-- Get User's Bibs -->
-                    <!-- Create Delete buttons on each card -->
-                   <?php
-                    while($row = mysqli_fetch_assoc($bibSql_getBib)) {?>
-                        <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-card--expand">
-                                <h4> <?php echo($row['name']); ?> </h4>
-                            </div>
-                            <div class="mdl-card__title mdl-card--expand">
-                                    <p class="bibType"><em> <?php echo($row['bibtype']); ?> </em></p>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography" onClick="bibOpen()"> Open </a>
-                                <div class="mdl-layout-spacer"></div>
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> Delete </a>
-                            </div>
-                        </div>
-
-                    <?php } ?>
+                    <?php echo($name); ?>
                 </div>
             </main>
         </div>
