@@ -47,13 +47,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   /*-------------------------------------------------------------
    Inserting Data
   -------------------------------------------------------------*/
-  $insert="INSERT INTO user(email, salt, password) VALUES ('$username','$user_salt','$hashed_pwd')";
-  try {
-    mysqli_query($conn, $insert);
-} catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-
+  $insert="INSERT INTO users (email, salt, password) VALUES ('$username','$user_salt','$hashed_pwd')";
+    mysqli_query($conn, $insert) or die("$insert".mysqli_error($conn));
 }
  ?>
 

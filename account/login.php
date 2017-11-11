@@ -8,16 +8,16 @@ $err = "";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   //escape the username and password fields - avoids SQL injection
   $email = mysqli_real_escape_string($conn,$_POST['email']);
-  $password = mysqli_real_escape_string($conn,$_POST['password']);
+  $form_password = mysqli_real_escape_string($conn,$_POST['password']);
 
 
       /*-------------------------------------------------------------
   	The query to the database and getting the value from it
       -------------------------------------------------------------*/
 
-      $find_user = "SELECT salt,password FROM login WHERE username='$email'";
-      $result = mysql_query($find_user, $link) or die('Error while trying to find salt'.mysql_error());
-      $row = mysql_fetch_assoc($result);
+      $find_user = "SELECT salt, password FROM users WHERE email='$email'";
+      $result = mysqli_query($conn, $find_user) or die("$find_user".mysqli_error($conn));
+      $row = mysqli_fetch_assoc($result);
 
       /*-------------------------------------------------------------
       	Getting the value from the database
@@ -35,18 +35,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
       if($check_hash == $stored_hash){
           echo "User authenticated";
+          //Set the session username to username variable and redirect to home page
+          $_SESSION['email'] = $email;
+          header('location:../home');
       }
       else{
           echo "Not authenticated";
       }
-  
+
   //Count the number of rows
   $numrows = mysqli_num_rows($sql);
 //If the number of rows the query produces is equal to 1...
 if($numrows == 1){
-  //Set the session username to username variable and redirect to home page
-  $_SESSION['email'] = $hashemail;
-  header('location:../home');
+
 //If not, set the error message to display on the form
 }else{
   $err = "Your login details are incorrect!";
