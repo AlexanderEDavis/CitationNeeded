@@ -3,6 +3,23 @@
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <title>Login ~ Citation Needed</title>
+        <script src="../scripts/require.js">
+        <script type="text/javascript">
+        require('../scripts/config.js')
+        session_start();
+
+        date_default_timezone_set('Europe/London');
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+           // username and password sent from form
+           firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+             // Handle Errors here.
+             var errorCode = error.code;
+             var errorMessage = error.message;
+             // ...
+           });
+         }
+        </script>
     </head>
     <body>
             <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
