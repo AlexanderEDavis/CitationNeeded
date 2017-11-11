@@ -86,6 +86,7 @@ if(isset($_SESSION['email'])){
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
 
+          <?php if($err == "") { ?>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="email" name="email">
               <label class="mdl-textfield__label" for="email">Email Address</label>
@@ -95,6 +96,22 @@ if(isset($_SESSION['email'])){
               <input class="mdl-textfield__input" type="password" id="password" name="password">
               <label class="mdl-textfield__label" for="password">Password</label>
             </div>
+
+            <?php }else{ ?>
+
+            <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="email" name="email">
+              <label class="mdl-textfield__label" for="email">Email Address</label>
+            </div>
+
+            <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="password" id="password" name="password">
+              <label class="mdl-textfield__label" for="password">Password</label>
+            </div>
+
+            <div class="mdl-color-text--red"><?php echo $err; ?></div>
+
+<?php }; ?>
 
         </div>
           <!-- MAIN CARD END -->
