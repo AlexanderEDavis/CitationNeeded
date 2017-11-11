@@ -6,16 +6,49 @@ include('../conf/dbconnect.php');
 $err = "";
 //If the form has been submitted and sends the post method...
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  //escape the username and password fields - avoids SQL injection
-  $email = mysqli_real_escape_string($conn,$_POST['email']);
+  /*-------------------------------------------------------------
+    The generateSalt function was gotten from http://code.activestate.com/recipes/576894-generate-a-salt/
+    @author AfroSoft
+  -------------------------------------------------------------*/
+
+  function generateSalt($max = 64) {
+  	$characterList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
+  	$i = 0;
+  	$salt = "";
+  	while ($i < $max) {
+  	    $salt .= $characterList{mt_rand(0, (strlen($characterList) - 1))};
+  	    $i++;
+  	}
+  	return $salt;
+  }
+
+  /*-------------------------------------------------------------
+   Form data
+  -------------------------------------------------------------*/
+  $username = mysqli_real_escape_string($conn,$_POST['email']);
   $password = mysqli_real_escape_string($conn,$_POST['password']);
 
-  //Hash username and password
-  $hashemail = hash('sha512' , $email);
-  $hashpassword = hash('sha512' , $password);
-  //Run a query to find the row where username and password matches
-  $qry = "INSERT INTO users(email, password) VALUES ('$hashemail', '$hashpassword')";
-  $sql = mysqli_query($conn,$qry);
+  /*-------------------------------------------------------------
+   Salting and Hashing
+  -------------------------------------------------------------*/
+
+  $user_salt = generateSalt(); // Generates a salt from the function above
+  $combo = $user_salt . $password; // Appending user password to the salt
+  $hashed_pwd = hash('sha512',$combo); // Using SHA512 to hash the salt+password combo string
+
+  /*-------------------------------------------------------------
+   Checks the connection to the DB has been made.
+   If successful selects the database to be used, else exits
+  -------------------------------------------------------------*/
+  if(!$conn)
+  {
+  	die("Could Not Connect:".mysqli_error());
+  }
+  /*-------------------------------------------------------------
+   Inserting Data
+  -------------------------------------------------------------*/
+  $insert="INSERT INTO users (email, salt, password) VALUES ('$username','$user_salt','$hashed_pwd')";
+    mysqli_query($conn, $insert) or die("$insert".mysqli_error($conn));
 }
  ?>
 
