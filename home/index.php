@@ -59,19 +59,14 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
                         <div class="demo-card-event mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-card--expand">
                                 <h4> <?php echo($row['name']); ?> </h4>
-        
                             </div>
                             <div class="mdl-card__title mdl-card--expand">
                                     <p class="bibType"><em> <?php echo($row['bibtype']); ?> </em></p>
-        
                             </div>
-                            
                             <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                Add to Calendar
-                                </a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> Open </a>
                                 <div class="mdl-layout-spacer"></div>
-                                <i class="material-icons">event</i>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> Delete </a>
                             </div>
                         </div>
 
