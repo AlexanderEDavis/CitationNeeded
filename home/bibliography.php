@@ -5,10 +5,17 @@ require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
+$bid = $_GET["id"];
 
-$bid = htmlspecialchars($_GET["id"]);
-$viewQry = "SELECT * FROM bibliographies WHERE bid = '$bid'";
+$viewQry = "SELECT * FROM bibliographies WHERE bid = $bid AND user = '$email'";
+$bibSql_getBib = mysqli_query($conn,$viewQry) or die("You do not have permissions to read this bibliography.");
+$row = mysqli_fetch_assoc($bibSql_getBib);
+$error = "You do not have permissions to read this bibliography.";
 
+// $results = count($bibSql_getBib);
+// if ($results == 0) {
+//   echo "You do not have permissions to read this bibliography.";
+// }
 ?>
 
 <html>
@@ -21,7 +28,14 @@ $viewQry = "SELECT * FROM bibliographies WHERE bid = '$bid'";
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">My Bibliographies</span>
+                    <span class="mdl-layout-title"><?php
+                    if ($row['name'] == ""){
+                      echo $error;
+                    }
+                    else {
+                      echo $row['name'];
+                    }
+                    ?></span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
                           <!-- <a class="mdl-navigation__link" href="#">Create Bibliography</a> -->
@@ -47,7 +61,7 @@ $viewQry = "SELECT * FROM bibliographies WHERE bid = '$bid'";
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <?php echo(htmlspecialchars($_GET["id"])); ?>
+
                 </div>
             </main>
         </div>
