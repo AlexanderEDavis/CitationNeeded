@@ -1,7 +1,7 @@
 <?php
 //Start a session and include the config for connecting to the database
 session_start();
-include('./conf/dbconnect.php');
+include('../conf/dbconnect.php');
 //Set the error variable so a undeclared variable exception doesn't occur
 $err = "";
 //If the form has been submitted and sends the post method...
@@ -14,8 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $hashemail = hash('sha512' , $email);
   $hashpassword = hash('sha512' , $password);
   //Run a query to find the row where username and password matches
-  $qry = "INSERT INTO users (email, password) VALUES ($hashemail, $hashpassword)";
+  $qry = "INSERT INTO users ('email', 'password') VALUES ('$hashemail', '$hashpassword')";
   $sql = mysqli_query($conn,$qry);
+}
  ?>
 
 <html>
