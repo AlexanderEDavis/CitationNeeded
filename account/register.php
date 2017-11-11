@@ -49,6 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   -------------------------------------------------------------*/
   $insert="INSERT INTO users (email, salt, password) VALUES ('$username','$user_salt','$hashed_pwd')";
     mysqli_query($conn, $insert) or die("$insert".mysqli_error($conn));
+    header('Location:login');
 }
  ?>
 
