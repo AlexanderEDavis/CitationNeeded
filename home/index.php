@@ -27,7 +27,7 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
 
         <script>
             function bibOpen(name) {
-                <?php $_SESSION['bibName'] = name; ?>
+                <?php $_SESSION['bibName'] = $name; ?>
             };
         </script>
 
@@ -72,7 +72,7 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
                                     <p class="bibType"><em> <?php echo($row['bibtype']); ?> </em></p>
                             </div>
                             <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography" onClick="bibOpen()"> Open </a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography" onClick="bibOpen(<?php echo($row['name']); ?>)"> Open </a>
                                 <div class="mdl-layout-spacer"></div>
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> Delete </a>
                             </div>
