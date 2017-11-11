@@ -27,6 +27,7 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib);
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title">My Bibliographies</span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
                           <a class="mdl-navigation__link" href="#">Create Bibliography</a>
