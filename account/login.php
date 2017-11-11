@@ -31,7 +31,56 @@
                       </nav>
                     </div> -->
                     <main class="mdl-layout__content">
-                      <div class="page-content"><!-- Your content goes here --></div>
+                      <div class="page-content">
+
+                        <!-- LOGIN CARD START -->
+                        <div id="cardLogin" class="mdl-card mdl-shadow--4dp">
+
+                          <!-- CARD TITLE START -->
+                          <div class="mdl-card__title mdl-color--primary">
+                            <h2 class="mdl-card__title-text mdl-color-text--white">Login</h2>
+                          </div>
+                          <!-- CARD TITLE END -->
+
+                          <!-- LOGIN FORM START -->
+                          <form method="post" action="" id="loginform">
+
+                              <!-- MAIN CARD START -->
+                            <div class="mdl-card__supporting-text">
+
+                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="email" name="email">
+                                <label class="mdl-textfield__label" for="email">Email Address</label>
+                              </div>
+
+                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password" id="password" name="password">
+                                <label class="mdl-textfield__label" for="password">Password</label>
+                              </div>
+
+                              <!-- <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="email" name="email">
+                                <label class="mdl-textfield__label" for="email">Email Address</label>
+                              </div>
+
+                              <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password" id="password" name="password">
+                                <label class="mdl-textfield__label" for="password">Password</label>
+                              </div> -->
+
+                            </div>
+                            <!-- MAIN CARD END -->
+
+                            <!-- ACTIONS CARD START -->
+                            <div class="mdl-card__actions mdl-card--border">
+                              <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Log In">
+                            </div>
+                            <!-- ACTIONS CARD END -->
+
+                          </form>
+                          <!-- LOGIN FORM END -->
+
+                      </div>
                     </main>
                   </div>
     </body>
