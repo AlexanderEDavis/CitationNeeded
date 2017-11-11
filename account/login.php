@@ -9,13 +9,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   //escape the username and password fields - avoids SQL injection
   $email = mysqli_real_escape_string($conn,$_POST['email']);
   $password = mysqli_real_escape_string($conn,$_POST['password']);
+
+
+      /*-------------------------------------------------------------
+  	The query to the database and getting the value from it
+      -------------------------------------------------------------*/
+
+      $find_user = "SELECT salt,password FROM login WHERE username='$email'";
+      $result = mysql_query($find_user, $link) or die('Error while trying to find salt'.mysql_error());
+      $row = mysql_fetch_assoc($result);
+
+      /*-------------------------------------------------------------
+      	Getting the value from the database
+      	&
+      	salting,hashing of the password from the form
+      -------------------------------------------------------------*/
+      $stored_salt = $row['salt'];
+      $stored_hash = $row['password'];
+      $check_pass = $stored_salt . $form_password;
+      $check_hash = hash('sha512',$check_pass);
+
+      /*-------------------------------------------------------------
+      	Comparing the two hashed values
+      -------------------------------------------------------------*/
+
+      if($check_hash == $stored_hash){
+          echo "User authenticated";
+      }
+      else{
+          echo "Not authenticated";
+      }
   
-  //Hash username and password
-  $hashemail = hash('sha512' , $email);
-  $hashpassword = hash('sha512' , $password);
-  //Run a query to find the row where username and password matches
-  $qry = "SELECT * FROM users WHERE email='$hashemail' and password='$hashpassword'";
-  $sql = mysqli_query($conn,$qry);
   //Count the number of rows
   $numrows = mysqli_num_rows($sql);
 //If the number of rows the query produces is equal to 1...
