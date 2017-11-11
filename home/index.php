@@ -7,13 +7,13 @@ require('../conf/sescheck.php');
 $email = $_SESSION['email'];
 
 $bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email'";
-$bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results.".mysqli_error($conn));
+$bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results. ".mysqli_error($conn));
 
 $bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
-$bibSql_newBib = mysqli_query($conn,$bibQry_newBib);
+$bibSql_newBib = mysqli_query($conn,$bibQry_newBib) or die("Could not create bibliography. ".mysqli_error($conn));
 
 $bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
-$bibSql_delBib = mysqli_query($conn,$bibQry_delBib);
+$bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
 
 ?>
 
@@ -54,11 +54,29 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib);
                 <div class="page-content">
                     <!-- Get User's Bibs -->
                     <!-- Create Delete buttons on each card -->
+                   <?php
+                    while($row = mysqli_fetch_assoc($bibSql_getBib)) {?>
+                        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h4> <?php echo($row['name']); ?> </h4>
+        
+                            </div>
+                            <div class="mdl-card__title mdl-card--expand">
+                                    <p class="bibType"><em> <?php echo($row['bibtype']); ?> </em></p>
+        
+                            </div>
+                            
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Add to Calendar
+                                </a>
+                                <div class="mdl-layout-spacer"></div>
+                                <i class="material-icons">event</i>
+                            </div>
+                        </div>
 
-                   <?php while ($row = $bibSql_getBib->fetch_assoc()) {
-                       print_r($row);
-                    }
-                    ?>
+                    <?php } ?>
+
                 </div>
             </main>
         </div>
