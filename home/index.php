@@ -22,8 +22,8 @@
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Citation Needed</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Bibliographies</a>
-                <a class="mdl-navigation__link" href="">Account Settings</a>
+                <a class="mdl-navigation__link" href="../home">Home</a>
+                <a class="mdl-navigation__link" href="../account/settings.php">Account Settings</a>
                 <a class="mdl-navigation__link" href="../account/logout.php">Logout</a>
             </nav>
         </div>
