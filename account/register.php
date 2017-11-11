@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $hashemail = hash('sha512' , $email);
   $hashpassword = hash('sha512' , $password);
   //Run a query to find the row where username and password matches
-  $qry = "INSERT INTO users ('email', 'password') VALUES ('$hashemail', '$hashpassword')";
+  $qry = "INSERT INTO users(email, password) VALUES ('$hashemail', '$hashpassword')";
   $sql = mysqli_query($conn,$qry);
 }
  ?>
