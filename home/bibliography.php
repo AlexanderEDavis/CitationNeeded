@@ -5,16 +5,9 @@ require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
-$name = $_SESSION['bibName'];
 
-$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email' ORDER BY name ASC";
-$bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results. ".mysqli_error($conn));
-
-$bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
-$bibSql_newBib = mysqli_query($conn,$bibQry_newBib) or die("Could not create bibliography. ".mysqli_error($conn));
-
-$bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
-$bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
+$bid = htmlspecialchars($_GET["bid"]);
+$viewQry = "SELECT * FROM bibliographies WHERE id = '$bid'";
 
 ?>
 
@@ -54,7 +47,7 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <?php echo($name); ?>
+                    <?php echo($bid); ?>
                 </div>
             </main>
         </div>
