@@ -80,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             <th class="mdl-data-table__cell--non-numeric">Authors</th>
                             <th class="mdl-data-table__cell--non-numeric">Year</th>
                             <th class="mdl-data-table__cell--non-numeric">URL</th>
+                            <th class="mdl-data-table__cell--non-numeric">Access Date</th>
                             <th class="mdl-data-table__cell--non-numeric">View</th>
                             <th class="mdl-data-table__cell--non-numeric">Edit</th>
                             <th class="mdl-data-table__cell--non-numeric">Delete</th>
@@ -95,6 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refurl']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refdate']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><a href="../home/viewref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View Citations</button></a></td>
                                     <td class="mdl-data-table__cell--non-numeric"><a href="./editref?rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></a></td>
                                     <td class="mdl-data-table__cell--non-numeric">

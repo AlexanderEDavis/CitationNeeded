@@ -81,6 +81,7 @@ $row = mysqli_fetch_assoc($refSql_getRef);
                             <?php echo($row['authors']) ?> (<?php echo($row['year']); ?>) <em><?php echo($row['refname']); ?>.</em>
                             <?php if ($row['reftype'] == "Website") { ?>
                                 Available at: <?php echo($row['refurl']); ?>
+                                [Accessed <?php echo($row['refdate']); ?>].
                             <?php } ?>
                         </p>
                     </div>
