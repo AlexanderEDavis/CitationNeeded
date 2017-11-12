@@ -77,6 +77,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             <tr>
                             <th class="mdl-data-table__cell--non-numeric">Type</th>
                             <th class="mdl-data-table__cell--non-numeric">Authors</th>
+                            <th class="mdl-data-table__cell--non-numeric">Year</th>
+                            <th class="mdl-data-table__cell--non-numeric">View</th>
                             <th class="mdl-data-table__cell--non-numeric">Edit</th>
                             <th class="mdl-data-table__cell--non-numeric">Delete</th>
                             </tr>
@@ -88,10 +90,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View Citations</button></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./editref?rid=<?php echo($row['rid']); ?>">Edit</button></td>
                                     <td class="mdl-data-table__cell--non-numeric">
                                         <form method="post" action="" id="delRef">
-                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="btnDelRef" type="submit" value=<?php echo($row['rid'])?>>Delete</button>
+                                            <button style="margin-top: 11px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" name="btnDelRef" type="submit" value=<?php echo($row['rid'])?>>Delete</button>
                                         </form>
                                     </td>
                                 </tr>
