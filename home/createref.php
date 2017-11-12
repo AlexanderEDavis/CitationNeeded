@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <!-- Create Delete buttons on each card -->
 
                     <!-- LOGIN CARD START -->
-      <div id="cardNewRef"  class="mdl-card mdl-shadow--4dp">
+        <div id="cardNewRef" class="mdl-card mdl-shadow--4dp">
 
         <!-- LOGIN FORM START -->
         <form method="POST" action="" id="newRef">
@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <!-- ACTIONS CARD END -->
 
       </form>
-        <!-- LOGIN FORM END -->
+        <!-- FORM END -->
                 </div>
                 </div>
             </main>
