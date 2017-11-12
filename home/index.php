@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         <script>
             function newBib() {
-                window.open('create','_self',false);
+                window.open('createbib','_self',false);
             }
         </script>
 

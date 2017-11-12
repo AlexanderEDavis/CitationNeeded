@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="page-content">
 
                     <div id="refButtons">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Add</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($bid); ?>">Add</button>
                     </div>
                     <div id="refTable">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
