@@ -87,16 +87,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             <div class="mdl-card__title mdl-card--expand">
                                     <p class="bibType"><em> <?php echo($row['bibtype']); ?> </em></p>
                             </div>
-                            <div class="mdl-card__actions mdl-card--border">
+                            <div id="divBibButtons" class="mdl-card__actions mdl-card--border">
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography?id=<?php echo($row['bid']); ?>"> Open </a>
                                 <div class="mdl-layout-spacer"></div>
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./editbib?id=<?php echo($row['bid']); ?>"> Edit </a>
-                                </div>
                                 <div class="mdl-layout-spacer"></div>
                                   <form method="post" action="" id="delReq">
                                     <button style="margin-top:15px; color: white;" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btnDelBib" name="delBtn" type="submit" value=<?php echo($row['bid'])?>>Delete</button>
                                   </form>
                                 </div>
+                          </div>
                             </div>
 
                     <?php } ?>

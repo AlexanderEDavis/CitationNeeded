@@ -115,3 +115,11 @@ body .mdl-button {
   flex-direction: column;
   width: 90%;
 }
+
+#divBibButtons {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  align-self: center;
+  width: 90%;
+}
