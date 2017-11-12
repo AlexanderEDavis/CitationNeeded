@@ -50,6 +50,34 @@
                       <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Confirm">
                       <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Cancel">
                     </div>
+                    <br>
+                    <div id="refButtons">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account!!!</button>
+                        <dialog class="mdl-dialog">
+                        <div class="mdl-dialog__content">
+                          <p>
+                            Are you sure you want to delete your account:(
+                          </p>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="button" class="mdl-button">Yes</button>
+                          <button type="button" class="mdl-button close">No</button>
+                        </div>
+                      </dialog>
+                      <script>
+                        var dialog = document.querySelector('dialog');
+                        var showDialogButton = document.querySelector('#show-dialog');
+                        if (! dialog.showModal) {
+                          dialogPolyfill.registerDialog(dialog);
+                        }
+                        showDialogButton.addEventListener('click', function() {
+                          dialog.showModal();
+                        });
+                        dialog.querySelector('.close').addEventListener('click', function() {
+                          dialog.close();
+                        });
+                      </script>
+                    </div>
                   </form>
                 </div>
             </main>
