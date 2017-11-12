@@ -16,11 +16,18 @@ $row = mysqli_fetch_assoc($refSql_getRef);
 // $refSql_newRef = mysqli_query($conn,$refQry_newRef) or die("Could not create reference. ".mysqli_error($conn));
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $refName = mysqli_real_escape_string($conn,$_POST['authors']);
-  $refType = mysqli_real_escape_string($conn,$_POST['refType']);
-  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$refType', '$refName')";
-  mysqli_query($conn,$refQry_createRef) or die("Could not create reference. $insert".mysqli_error($conn));
-  header("Refresh:0 url=../home/bibliography?id=$bid");
+    $refAuthors = mysqli_real_escape_string($conn,$_POST['authors']);
+    $refName = mysqli_real_escape_string($conn,$_POST['refName']);
+    $refType = mysqli_real_escape_string($conn,$_POST['refType']);
+    $refURL = mysqli_real_escape_string($conn,$_POST['url']);
+    $refYear = mysqli_real_escape_string($conn,$_POST['year']);
+    $refDate = mysqli_real_escape_string($conn,$_POST['refdate']);
+    $refEdition = mysqli_real_escape_string($conn,$_POST['refedition']);
+    $refPop = mysqli_real_escape_string($conn,$_POST['refpop']);
+    $refPublish = mysqli_real_escape_string($conn,$_POST['refpub']);  
+    $refQry_editRef = "UPDATE reference SET refname = '$refName', reftype = '$refType', refurl = '$refURL', authors = '$refAuthors', year = '$refYear', refdate = '$refDate', refedition = '$refEdition', refpop = '$refPop', refpub = '$refPublish' WHERE rid='$rid'";
+    mysqli_query($conn,$refQry_editRef) or die("Could not edit reference. $insert".mysqli_error($conn));
+    header("Refresh:0 url=../home/bibliography?id=$bid");
 }
 
 ?>
@@ -74,25 +81,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="refName"></input>
+              <input class="mdl-textfield__input" type="text" id="name" name="refName" value="<?php echo($row['refname']); ?>"></input>
               <label class="mdl-textfield__label" for="authors">Name</label>
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="authors"></input>
+              <input class="mdl-textfield__input" type="text" id="name" name="authors" value="<?php echo($row['authors']); ?>"></input>
               <label class="mdl-textfield__label" for="authors">Author(s)</label>
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="year"></input>
+              <input class="mdl-textfield__input" type="text" id="name" name="year" value="<?php echo($row['year']); ?>"></input>
               <label class="mdl-textfield__label" for="year">Year</label>
             </div>
 
             <!-- Select with arrow-->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-            <select class="mdl-textfield__input" type="text" id="refType" value="Belarus" name="refType" readonly tabIndex="-1">
+            <select class="mdl-textfield__input" type="text" id="refType" value="<?php echo($row['reftype']); ?>" name="refType" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                <option class="mdl-menu__item" value=""></option>
                 <option class="mdl-menu__item" value="Website">Website</option>
                 <option class="mdl-menu__item" value="Book">Book</option>
                 <option class="mdl-menu__item" value="Article">Article</option>
@@ -101,8 +109,28 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="url"></input>
-              <label class="mdl-textfield__label" for="year">URL</label>
+              <input class="mdl-textfield__input" type="text" id="name" name="url" value="<?php echo($row['refurl']); ?>"></input>
+              <label class="mdl-textfield__label" for="year" >URL</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refdate" value="<?php echo($row['refdate']); ?>"></input>
+              <label class="mdl-textfield__label" for="year">Access Date: Please enter dates as Day Month(Word) Year</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refedition" value="<?php echo($row['refedition']); ?>"></input>
+              <label class="mdl-textfield__label" for="refedition">Edition: xth edn.</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refpop" value="<?php echo($row['refpop']); ?>"></input>
+              <label class="mdl-textfield__label" for="refpop">Place of Publication</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refpub" value="<?php echo($row['refpub']); ?>"></input>
+              <label class="mdl-textfield__label" for="refpub">Publisher</label>
         </div>
 
         
@@ -111,7 +139,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         <!-- ACTIONS CARD START -->
         <div class="mdl-card__actions mdl-card--border">
-          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" style="clear:both" type="submit" value="Create">
+          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" style="clear:both" type="submit" value="Save">
         </div>
         <!-- ACTIONS CARD END -->
 
