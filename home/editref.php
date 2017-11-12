@@ -97,13 +97,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             <!-- Select with arrow-->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-            <select class="mdl-textfield__input" type="text" id="refType" value="<?php echo($row['reftype']); ?>" name="refType" readonly tabIndex="-1">
+            <select class="mdl-textfield__input" type="text" id="refType" name="refType" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                <option class="mdl-menu__item" value=""></option>
-                <option class="mdl-menu__item" value="Website" <?php if($refType=="Website"){ echo 'selected="selected"'; }?> >Website</option>
-                <option class="mdl-menu__item" value="Book" <?php if($refType=="Book"){ echo 'selected="selected"';} ?> >Book</option>
-                <option class="mdl-menu__item" value="Article" <?php if($refType=="Article"){ echo 'selected="selected"';} ?> >Article</option>
+                <option class="mdl-menu__item" value="Website" <?php if($row['reftype']=="Website"){ echo 'selected="selected"'; }?> >Website</option>
+                <option class="mdl-menu__item" value="Book" <?php if($row['reftype']=="Book"){ echo 'selected="selected"';} ?> >Book</option>
+                <option class="mdl-menu__item" value="Article" <?php if($row['reftype']=="Article"){ echo 'selected="selected"';} ?> >Article</option>
             </ul>
           </select>
         </div>

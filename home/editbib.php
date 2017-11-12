@@ -76,13 +76,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             <!-- Select with arrow-->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-            <select class="mdl-textfield__input" type="text" id="bibtype" value="<?php echo($row['bibtype']); ?>" name="bibtype" readonly tabIndex="-1">
+            <select class="mdl-textfield__input" type="text" id="bibtype" name="bibtype" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Bibliography Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                <option class="mdl-menu__item" value=""></option>
-                <option class="mdl-menu__item" value="BCU Harvard">BCU Harvard</option>
-                <option class="mdl-menu__item" value="Aston Harvard">Aston Harvard</option>
-                <option class="mdl-menu__item" value="APA">APA</option>
+                <option class="mdl-menu__item" value="BCU Harvard" <?php if($row['bibtype']=="BCU Harvard"){ echo 'selected'; }?> >BCU Harvard</option>
+                <option class="mdl-menu__item" value="Aston Harvard" <?php if($row['bibtype']=="Aston Harvard"){ echo 'selected'; }?>>Aston Harvard</option>
+                <option class="mdl-menu__item" value="APA" <?php if($row['bibtype']=="APA"){ echo 'selected'; }?>>APA</option>
             </ul>
           </select>
         </div>
