@@ -13,9 +13,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $bibName = mysqli_real_escape_string($conn,$_POST['name']);
   $bibType = mysqli_real_escape_string($conn,$_POST['refType']);
   $bibQry_createBib = "INSERT INTO bibliographies (name, user, bibtype) VALUES ('$bibName', '$email', '$bibType')";
-  var_dump($bibQry_createBib);
-  //mysqli_query($conn,$bibQry_newBib) or die("Could not create bibliography. ".mysqli_error($conn));
-  //header("Refresh:0 url=../home");
+  mysqli_query($conn,$bibQry_createBib) or die("Could not create bibliography. ".mysqli_error($conn));
+  header("Refresh:0 url=../home");
 }
 
 ?>
@@ -75,20 +74,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             <!-- Select with arrow-->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-            <input class="mdl-textfield__input" type="text" id="refType" value="Belarus" readonly tabIndex="-1">
+            <select class="mdl-textfield__input" type="text" id="refType" value="Belarus" name="refType" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Referencing Method</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                <li class="mdl-menu__item" data-val="DE">Germany</li>
-                <li class="mdl-menu__item" data-val="BY">Belarus</li>
-                <li class="mdl-menu__item" data-val="RU">Russia</li>
+                <option class="mdl-menu__item" value="BCU Harvard">BCU Harvard</option>
+                <option class="mdl-menu__item" value="Aston Harvard">Aston Harvard</option>
+                <option class="mdl-menu__item" value="APA">APA</option>
             </ul>
+          </input>
         </div>
         </div>
           <!-- MAIN CARD END -->
 
         <!-- ACTIONS CARD START -->
         <div class="mdl-card__actions mdl-card--border">
-          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Create">
+          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" style="clear:both" type="submit" value="Create">
         </div>
         <!-- ACTIONS CARD END -->
 
