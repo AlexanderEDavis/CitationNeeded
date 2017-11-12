@@ -17,7 +17,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $refURL = mysqli_real_escape_string($conn,$_POST['url']);
   $refYear = mysqli_real_escape_string($conn,$_POST['year']);
   $refDate = mysqli_real_escape_string($conn,$_POST['refdate']);
-  $refQry_createRef = "INSERT INTO reference (bibliography, refname, reftype, refurl, authors, year, refdate) VALUES ('$bid', '$refName', '$refType', '$refURL', '$refAuthors', '$refYear', '$refDate')";
+  $refEdition = mysqli_real_escape_string($conn,$_POST['refedition']);
+  $refPop = mysqli_real_escape_string($conn,$_POST['refpop']);
+  $refPublish = mysqli_real_escape_string($conn,$_POST['refpub']);
+  $refQry_createRef = "INSERT INTO reference (bibliography, refname, reftype, refurl, authors, year, refdate, refedition, refpop, refpub) VALUES ('$bid', '$refName', '$refType', '$refURL', '$refAuthors', '$refYear', '$refDate', '$refEdition', '$refPop', '$refPublish')";
   mysqli_query($conn,$refQry_createRef) or die("Could not create reference. $insert".mysqli_error($conn));
   header("Refresh:0 url=../home/bibliography?id=$bid");
 }
@@ -107,6 +110,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="name" name="refdate"></input>
               <label class="mdl-textfield__label" for="year">Access Date: Please enter dates as Day Month(Word) Year</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refedition"></input>
+              <label class="mdl-textfield__label" for="refedition">Edition: xth edn.</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refpop"></input>
+              <label class="mdl-textfield__label" for="refpop">Place of Publication</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="name" name="refpub"></input>
+              <label class="mdl-textfield__label" for="refpub">Publisher</label>
         </div>
 
         </div>

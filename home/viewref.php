@@ -62,29 +62,35 @@ $row = mysqli_fetch_assoc($refSql_getRef);
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
+                <h3>This currently only works correctly for websites.</h3>
                     <div id="refButtons">
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="../home/bibliography?id=<?php echo($bid); ?>"> Go Back </a>
                     </div>
-                    <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
-                    <div class="mdl-card__title mdl-card--expand divCitationTitle">
-                        <h4>In-Text Citation:</h4>
-                        <br>
-                        <p class="citation">(<?php echo($row['authors']) ?>, <?php echo($row['year']); ?>)</p>
+                    <div>
+                        <!-- Insert properties table here -->
                     </div>
-                    </div>
+                    <div class="divCitation">
+                        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand divCitationTitle">
+                            <h4>In-Text Citation:</h4>
+                            <br>
+                            <p class="citation">(<?php echo($row['authors']) ?>, <?php echo($row['year']); ?>)</p>
+                        </div>
+                        </div>
 
-                    <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
-                    <div class="mdl-card__title mdl-card--expand divCitationTitle">
-                        <h4>Bibliography Citation:</h4>
-                        <br>
-                        <p class="citation">
-                            <?php echo($row['authors']) ?> (<?php echo($row['year']); ?>) <em><?php echo($row['refname']); ?>.</em>
-                            <?php if ($row['reftype'] == "Website") { ?>
-                                Available at: <?php echo($row['refurl']); ?>
-                                [Accessed <?php echo($row['refdate']); ?>].
-                            <?php } ?>
-                        </p>
-                    </div>
+                        <div class="demo-card-event mdl-card mdl-shadow--2dp divCitationCard">
+                        <div class="mdl-card__title mdl-card--expand divCitationTitle">
+                            <h4>Bibliography Citation:</h4>
+                            <br>
+                            <p class="citation">
+                                <?php echo($row['authors']) ?> (<?php echo($row['year']); ?>) <em><?php echo($row['refname']); ?>.</em>
+                                <?php if ($row['reftype'] == "Website") { ?>
+                                    Available at: <?php echo($row['refurl']); ?>
+                                    [Accessed <?php echo($row['refdate']); ?>].
+                                <?php } ?>
+                            </p>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </main>

@@ -82,11 +82,22 @@
 }
 
 .divCitation {
-  display: inline-block;
+  display: table;
+  flex-direction: column;
+  float: left;
+  width: 90%;
+}
+
+.divCitationCard {
+  display: table;
+  flex-direction: column;
   float: left;
   width: 90%;
 }
 
 .divCitationTitle {
+  display: flex;
+  float: left;
   flex-direction: column;
+  width: 90%;
 }
