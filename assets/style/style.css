@@ -51,3 +51,8 @@
   #btnNewBib {
     background-color: lightgray;
   }
+
+  #btnDelBib {
+    margin-top: 2%;
+    color: white;
+  }

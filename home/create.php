@@ -6,20 +6,14 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 
-$bibQry_getBib = "SELECT * FROM bibliographies WHERE user='$email' ORDER BY name ASC";
-$bibSql_getBib = mysqli_query($conn,$bibQry_getBib) or die("Could not select results. ".mysqli_error($conn));
-
 $bibQry_newBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
 $bibSql_newBib = mysqli_query($conn,$bibQry_newBib) or die("Could not create bibliography. ".mysqli_error($conn));
 
-$bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
-$bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
-
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $bid = mysqli_real_escape_string($conn,$_POST['delBtn']);
-  $bibQry_delBib = "DELETE FROM bibliographies WHERE bid = '$bid'";
-  mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
-  header("Refresh:0");
+  $bibName = mysqli_real_escape_string($conn,$_POST['createBtn']);
+  $bibQry_delBib = "INSERT INTO bibliographies (name, user) VALUES ('$bibName', '$email')";
+  mysqli_query($conn,$bibQry_newBib) or die("Could not create bibliography. ".mysqli_error($conn));
+  header("Refresh:0 url=../home");
 }
 
 ?>
@@ -38,20 +32,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             };
         </script>
 
-        <script>
-            function newBib() {
-                window.open('create','_self',false);
-            }
-        </script>
-
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">My Bibliographies</span>
+                    <span class="mdl-layout-title">Create New Bibliography</span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
                           <!-- <a class="mdl-navigation__link" href="#">Create Bibliography</a> -->
-                          <button id="btnNewBib" class="mdl-button mdl-button--raised mdl-js-button dialog-button" onclick=newBib()>New Bibliography</button>
+                          <button id="btnNewBib" class="mdl-button mdl-button--raised mdl-js-button dialog-button">New Bibliography</button>
                         </nav>
                     <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
                         <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
@@ -75,6 +63,61 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="page-content">
                     <!-- Get User's Bibs -->
                     <!-- Create Delete buttons on each card -->
+
+                    <!-- LOGIN CARD START -->
+      <div id="cardLogin"  class="mdl-card mdl-shadow--4dp">
+
+        <!-- CARD TITLE START -->
+        <div class="mdl-card__title mdl-color--primary">
+          <h2 class="mdl-card__title-text mdl-color-text--white">Login</h2>
+        </div>
+        <!-- CARD TITLE END -->
+
+        <!-- LOGIN FORM START -->
+        <form method="post" action="" id="loginform">
+
+          <!-- MAIN CARD START -->
+        <div class="mdl-card__supporting-text">
+
+          <?php if($err == "") { ?>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="email" name="email">
+              <label class="mdl-textfield__label" for="email">Email Address</label>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="password" id="password" name="password">
+              <label class="mdl-textfield__label" for="password">Password</label>
+            </div>
+
+            <?php }else{ ?>
+
+            <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="email" name="email">
+              <label class="mdl-textfield__label" for="email">Email Address</label>
+            </div>
+
+            <div class="mdl-textfield is-invalid mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="password" id="password" name="password">
+              <label class="mdl-textfield__label" for="password">Password</label>
+            </div>
+
+            <div class="mdl-color-text--red"><?php echo $err; ?></div>
+
+<?php }; ?>
+
+        </div>
+          <!-- MAIN CARD END -->
+
+        <!-- ACTIONS CARD START -->
+        <div class="mdl-card__actions mdl-card--border">
+          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Log In">
+        </div>
+        <!-- ACTIONS CARD END -->
+
+      </form>
+        <!-- LOGIN FORM END -->
+
                    <?php
                     while($row = mysqli_fetch_assoc($bibSql_getBib)) {?>
                         <div class="demo-card-event mdl-card mdl-shadow--2dp">
@@ -88,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography?id=<?php echo($row['bid']); ?>"> Open </a>
                                 <div class="mdl-layout-spacer"></div>
                                   <form method="post" action="" id="delReq">
-                                    <button style="margin-top:15px; color: white;" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btnDelBib" name="delBtn" type="submit" value=<?php echo($row['bid'])?>>Delete</button>
+                                    <button style="margin-top:15px; color: white;" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="createBtn" type="submit" value=<?php echo($row['bid'])?>>Submit</button>
                                   </form>
                                 </div>
                             </div>
