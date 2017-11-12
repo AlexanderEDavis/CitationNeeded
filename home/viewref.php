@@ -66,16 +66,23 @@ $row = mysqli_fetch_assoc($refSql_getRef);
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="../home/bibliography?id=<?php echo($bid); ?>"> Go Back </a>
                     </div>
                     <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
-                    <div class="mdl-card__title mdl-card--expand">
+                    <div class="mdl-card__title mdl-card--expand divCitationTitle">
                         <h4>In-Text Citation:</h4>
+                        <br>
                         <p class="citation">(<?php echo($row['authors']) ?>, <?php echo($row['year']); ?>)</p>
                     </div>
                     </div>
 
                     <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
-                    <div class="mdl-card__title mdl-card--expand">
+                    <div class="mdl-card__title mdl-card--expand divCitationTitle">
                         <h4>Bibliography Citation:</h4>
-                        <p class="citation"><?php echo($row['authors']) ?> (<?php echo($row['year']); ?>)</p>
+                        <br>
+                        <p class="citation">
+                            <?php echo($row['authors']) ?> (<?php echo($row['year']); ?>) <em><?php echo($row['refname']); ?>.</em>
+                            <?php if ($row['reftype'] == "Website") { ?>
+                                Available at: <?php echo($row['refurl']); ?>
+                            <?php } ?>
+                        </p>
                     </div>
                     </div>
                 </div>
