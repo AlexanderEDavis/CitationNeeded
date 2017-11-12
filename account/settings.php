@@ -35,11 +35,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
       if(($check_hash === $stored_hash)&&($newpass1 === $newpass2)){
           echo "Password Changed";
+          $newPass = $stored_salt . $newpass1;
+          $newHash = hash('sha512',$newPass);
+          $passUpdateQuery = "UPDATE users SET password='$newHash' WHERE email='$email'";
+          mysqli_query($conn, $passUpdateQuery) or die("".mysqli_error($conn));
           header('Location: ../home');
       }
       else{
-          echo "Not authenticated";
-          var_dump(array($stored_salt, $stored_hash, $check_pass, $check_hash));
+          echo "Password Not Changed" . mysqli_error($conn);
       }
     }
 ?>
