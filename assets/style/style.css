@@ -57,6 +57,7 @@
     color: white;
   }
 
+
   #cardNewBib {
       position: absolute;
       left: 10%;
@@ -67,3 +68,11 @@
   .mdl-card{
     min-height: 30px;
   }
+
+#refButtons, #refTable {
+  margin: 20px;
+}
+
+#refTable {
+  width: 90%;
+}
