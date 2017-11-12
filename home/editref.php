@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $refDate = mysqli_real_escape_string($conn,$_POST['refdate']);
     $refEdition = mysqli_real_escape_string($conn,$_POST['refedition']);
     $refPop = mysqli_real_escape_string($conn,$_POST['refpop']);
-    $refPublish = mysqli_real_escape_string($conn,$_POST['refpub']);  
+    $refPublish = mysqli_real_escape_string($conn,$_POST['refpub']);
     $refQry_editRef = "UPDATE reference SET refname = '$refName', reftype = '$refType', refurl = '$refURL', authors = '$refAuthors', year = '$refYear', refdate = '$refDate', refedition = '$refEdition', refpop = '$refPop', refpub = '$refPublish' WHERE rid='$rid'";
     mysqli_query($conn,$refQry_editRef) or die("Could not edit reference. $insert".mysqli_error($conn));
     header("Refresh:0 url=../home/bibliography?id=$bid");
@@ -101,9 +101,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                 <option class="mdl-menu__item" value=""></option>
-                <option class="mdl-menu__item" value="Website">Website</option>
-                <option class="mdl-menu__item" value="Book">Book</option>
-                <option class="mdl-menu__item" value="Article">Article</option>
+                <option class="mdl-menu__item" value="Website" <?php if($refType=="Website") echo 'selected="selected"'; ?> >Website</option>
+                <option class="mdl-menu__item" value="Book" <?php if($refType=="Book") echo 'selected="selected"'; ?> >Book</option>
+                <option class="mdl-menu__item" value="Article" <?php if($refType=="Article") echo 'selected="selected"'; ?> >Article</option>
             </ul>
           </select>
         </div>
@@ -133,7 +133,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
               <label class="mdl-textfield__label" for="refpub">Publisher</label>
         </div>
 
-        
+
         </div>
           <!-- MAIN CARD END -->
 
