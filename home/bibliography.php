@@ -76,8 +76,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         <thead>
                             <tr>
                             <th class="mdl-data-table__cell--non-numeric">Type</th>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
                             <th class="mdl-data-table__cell--non-numeric">Authors</th>
                             <th class="mdl-data-table__cell--non-numeric">Year</th>
+                            <th class="mdl-data-table__cell--non-numeric">URL</th>
                             <th class="mdl-data-table__cell--non-numeric">View</th>
                             <th class="mdl-data-table__cell--non-numeric">Edit</th>
                             <th class="mdl-data-table__cell--non-numeric">Delete</th>
@@ -89,8 +91,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             while($row = mysqli_fetch_assoc($refSql_getRef)) {?>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refname']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refurl']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View Citations</button></td>
                                     <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./editref?rid=<?php echo($row['rid']); ?>">Edit</button></td>
                                     <td class="mdl-data-table__cell--non-numeric">
