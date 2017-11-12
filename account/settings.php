@@ -1,3 +1,49 @@
+<?php
+include('../conf/dbconnect.php');
+include('../conf/sescheck.php');
+  $email = $_SESSION['email'];
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+  //escape the username and password fields - avoids SQL injection
+  var_dump($_POST);
+  $current_password = mysqli_real_escape_string($conn,$_POST['currentpass']);
+  $newpass1 = mysqli_real_escape_string($conn,$_POST['newpass']);
+  $newpass2 = mysqli_real_escape_string($conn,$_POST['confpass']);
+
+
+      /*-------------------------------------------------------------
+  	The query to the database and getting the value from it
+      -------------------------------------------------------------*/
+
+      $find_user = "SELECT salt, password FROM users WHERE email='$email'";
+      $result = mysqli_query($conn, $find_user) or die("$find_user".mysqli_error($conn));
+      $row = mysqli_fetch_assoc($result);
+
+      /*-------------------------------------------------------------
+      	Getting the value from the database
+      	&
+      	salting,hashing of the password from the form
+      -------------------------------------------------------------*/
+      $stored_salt = $row['salt'];
+      $stored_hash = $row['password'];
+      $check_pass = $stored_salt . $current_password;
+      $check_hash = hash('sha512',$check_pass);
+
+      /*-------------------------------------------------------------
+      	Comparing the two hashed values
+      -------------------------------------------------------------*/
+
+      if(($check_hash === $stored_hash)&&($newpass1 === $newpass2)){
+          echo "Password Changed";
+          header('Location: ../home');
+      }
+      else{
+          echo "Not authenticated";
+          var_dump(array($stored_salt, $stored_hash, $check_pass, $check_hash));
+      }
+    }
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="../assets/style/style.css">
@@ -10,9 +56,6 @@
                 <div class="mdl-layout__header-row">
                     <div class="mdl-layout-spacer"></div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-                        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                            <i class="material-icons">search</i>
-                        </label>
                         <div class="mdl-textfield__expandable-holder">
                             <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
                         </div>
@@ -30,25 +73,24 @@
             <main class="mdl-layout__content">
                 <div class="page-content">
                   <!-- Simple Textfield -->
-                  <form id="passreset" action="#">
+                  <form method="POST" id="passreset" action="">
                     <div class="mdl-textfield mdl-js-textfield">
-                      <input class="mdl-textfield__input" type="text" id="sample1">
-                      <label class="mdl-textfield__label" for="sample1">Current password...</label>
+                      <input class="mdl-textfield__input" type="password" name="currentpass" id="currentpass">
+                      <label class="mdl-textfield__label" for="currentpass">Current password</label>
                     </div>
                     <br>
                     <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="sample2">
-                    <label class="mdl-textfield__label" for="sample1">New password...</label>
+                    <input class="mdl-textfield__input" type="password" name="newpass" id="newpass">
+                    <label class="mdl-textfield__label" for="newpass">New password</label>
                     </div>
                     <br>
                     <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="sample3">
-                    <label class="mdl-textfield__label" for="sample1">Confirm password...</label>
+                    <input class="mdl-textfield__input" type="password" name="confpass" id="confpass">
+                    <label class="mdl-textfield__label" for="confpass">Confirm password</label>
                     </div>
                     <br>
                     <div class="mdl-card__actions mdl-card--border">
                       <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Confirm">
-                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Cancel">
                     </div>
                     <br>
                     <div id="refButtons">
@@ -56,7 +98,7 @@
                         <dialog class="mdl-dialog">
                         <div class="mdl-dialog__content">
                           <p>
-                            Are you sure you want to delete your account:(
+                            Are you sure you want to delete your account:
                           </p>
                         </div>
                         <div class="mdl-dialog__actions">
