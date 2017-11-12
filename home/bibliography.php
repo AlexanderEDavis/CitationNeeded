@@ -85,16 +85,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                             <?php
                             while($row = mysqli_fetch_assoc($refSql_getRef)) {?>
-                                <?php $tbRid = $refSql_getRef['rid']; ?>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></td>
                                     <td class="mdl-data-table__cell--non-numeric">
-                                        <?php echo($tbRid); ?>
-                                        <!-- <form method="post" action="" id="delRef">
-                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="btnDelRef" type="submit" value=<?php echo($refSql_getRef['rid'])?>>Delete</button>
-                                        </form> -->
+                                        <form method="post" action="" id="delRef">
+                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="btnDelRef" type="submit" value=<?php echo($row['rid'])?>>Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php } ?>
