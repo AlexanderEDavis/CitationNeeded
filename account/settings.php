@@ -74,8 +74,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <a class="mdl-navigation__link" href="../account/logout">Logout</a>
             </nav>
         </div>
-            <main class="mdl-layout__content" style="margin-left: 10%;">
-                <div class="page-content">
+            <main class="mdl-layout__content">
+                <div class="page-content" style="margin-left: 10%;">
                   <!-- Simple Textfield -->
                   <form method="POST" id="passreset" action="">
                     <div class="mdl-textfield mdl-js-textfield">
