@@ -61,9 +61,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <!-- Create Delete buttons on each card -->
 
                     <!-- LOGIN CARD START -->
-      <div id="cardNewRef"  class="mdl-card mdl-shadow--4dp">
+        <div id="cardNewRef" class="mdl-card mdl-shadow--4dp">
 
-        <!-- LOGIN FORM START -->
+        <!-- FORM START -->
         <form method="post" action="" id="newRef">
 
           <!-- MAIN CARD START -->
@@ -86,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </div>
         </div>
           <!-- MAIN CARD END -->
-
+          
         <!-- ACTIONS CARD START -->
         <div class="mdl-card__actions mdl-card--border">
           <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" style="clear:both" type="submit" value="Create">
@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <!-- ACTIONS CARD END -->
 
       </form>
-        <!-- LOGIN FORM END -->
+        <!-- FORM END -->
                 </div>
                 </div>
             </main>
