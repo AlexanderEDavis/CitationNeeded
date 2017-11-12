@@ -13,6 +13,11 @@
     top: 30%;
 }
 
+body .mdl-button {
+  min-width: 32px;
+  display: inline-block;
+}
+
 .demo-card-event.mdl-card {
     width: 256px;
     height: 256px;
@@ -41,6 +46,15 @@
   .demo-card-event > .mdl-card__actions,
   .demo-card-event > .mdl-card__actions > .mdl-button {
     color: #fff;
+  }
+
+  body .mdl-button__ripple-container {
+    padding: 5px;
+    float: left;
+  }
+
+  a .mdl-js-ripple-effect {
+    padding: 5px;
   }
 
   #bibType {
