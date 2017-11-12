@@ -58,7 +58,7 @@
   }
 
 
-  #cardNewBib, #cardNewRef, #cardEditRef {
+  #cardNewBib, #cardNewRef, #cardEditRef, #cardEditBib {
       position: absolute;
       left: 10%;
       top: 10%;
