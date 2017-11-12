@@ -101,9 +101,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                 <option class="mdl-menu__item" value=""></option>
-                <option class="mdl-menu__item" value="Website" <?php if($refType=="Website") echo 'selected="selected"'; ?> >Website</option>
-                <option class="mdl-menu__item" value="Book" <?php if($refType=="Book") echo 'selected="selected"'; ?> >Book</option>
-                <option class="mdl-menu__item" value="Article" <?php if($refType=="Article") echo 'selected="selected"'; ?> >Article</option>
+                <option class="mdl-menu__item" value="Website" <?php if($refType=="Website"){ echo 'selected="selected"'; }?> >Website</option>
+                <option class="mdl-menu__item" value="Book" <?php if($refType=="Book"){ echo 'selected="selected"';} ?> >Book</option>
+                <option class="mdl-menu__item" value="Article" <?php if($refType=="Article"){ echo 'selected="selected"';} ?> >Article</option>
             </ul>
           </select>
         </div>
