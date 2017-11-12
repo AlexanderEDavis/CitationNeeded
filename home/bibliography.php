@@ -15,6 +15,13 @@ $error = "You do not have permissions to read this bibliography.";
 $refQry_getRef = "SELECT * FROM reference WHERE bibliography=$bid ORDER BY authors ASC";
 $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select results. ".mysqli_error($conn));
 
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $rid = mysqli_real_escape_string($conn,$_POST['delRef']);
+    $refQry_delRef = "DELETE FROM reference WHERE rid = $rid";
+    mysqli_query($conn,$refQry_delRef) or die("Could not delete reference. ".mysqli_error($conn));
+    header("Refresh:0");
+}
+
 ?>
 
 <html>
@@ -78,11 +85,17 @@ $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select res
 
                             <?php
                             while($row = mysqli_fetch_assoc($refSql_getRef)) {?>
+                                <?php $tbRid = $refSql_getRef['rid']; ?>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button></td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <?php echo($tbRid); ?>
+                                        <!-- <form method="post" action="" id="delRef">
+                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="btnDelRef" type="submit" value=<?php echo($refSql_getRef['rid'])?>>Delete</button>
+                                        </form> -->
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>

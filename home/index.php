@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
   mysqli_query($conn,$bibQry_delRef) or die("Could not delete bibliography. ".mysqli_error($conn));
   header("Refresh:0");
+  header("Refresh:0");
 }
 
 ?>
