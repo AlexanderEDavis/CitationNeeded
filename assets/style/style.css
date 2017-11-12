@@ -87,10 +87,6 @@
   width: 90%;
 }
 
-.citation {
-  /* display: list-item; */
-}
-
 .divCitationTitle {
   flex-direction: column;
 }
