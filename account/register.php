@@ -49,8 +49,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   -------------------------------------------------------------*/
   $insert="INSERT INTO users (email, salt, password) VALUES ('$username','$user_salt','$hashed_pwd')";
     mysqli_query($conn, $insert) or die("$insert".mysqli_error($conn));
+
+    $check = "SELECT * FROM users WHERE email = '$username'";
+    $checksql = mysqli_query($conn, $check);
+    
+    if ($checksql != NULL) {
+      header("Refresh:0 url=../account/login.php");
+    } else {
+      header("Refresh:0 url=../account/register.php");
+    }
 }
- ?>
+?>
 
 <html>
     <head>
