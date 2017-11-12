@@ -18,7 +18,9 @@ $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bib
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $bid = mysqli_real_escape_string($conn,$_POST['delBtn']);
   $bibQry_delBib = "DELETE FROM bibliographies WHERE bid = '$bid'";
+  $bibQry_delRef = "DELETE FROM reference WHERE bibliography = $bid";
   mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
+  mysqli_query($conn,$bibQry_delRef) or die("Could not delete bibliography. ".mysqli_error($conn));
   header("Refresh:0");
 }
 
