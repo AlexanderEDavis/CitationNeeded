@@ -96,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refurl']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><a href="../home/viewref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View Citations</button></a></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./editref?rid=<?php echo($row['rid']); ?>">Edit</button></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><a href="./editref?rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></a></td>
                                     <td class="mdl-data-table__cell--non-numeric">
                                         <form method="post" action="" id="delRef">
                                             <button style="margin-top: 11px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" name="btnDelRef" type="submit" value=<?php echo($row['rid'])?>>Delete</button>

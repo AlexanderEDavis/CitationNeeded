@@ -21,6 +21,7 @@
             </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Citation Needed</span>
+            <span><h6><?php echo($email); ?></h6></span>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="../home">Home</a>
                 <a class="mdl-navigation__link" href="../account/settings">Account Settings</a>
