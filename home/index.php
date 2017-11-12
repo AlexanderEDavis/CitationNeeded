@@ -15,10 +15,12 @@ $bibSql_newBib = mysqli_query($conn,$bibQry_newBib) or die("Could not create bib
 $bibQry_delBib = "DELETE FROM bibliographies WHERE name = '$bibName'";
 $bibSql_delBib = mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
 
-function delBib($name) {
-    $bibSql_delBib(name);
-    parent.window.location.reload();
-};
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+  $bid = mysqli_real_escape_string($conn,$_POST['delBtn']);
+  $bibQry_delBib = "DELETE FROM bibliographies WHERE bid = '$bid'";
+  mysqli_query($conn,$bibQry_delBib) or die("Could not delete bibliography. ".mysqli_error($conn));
+  header("Refresh:0");
+}
 
 ?>
 
@@ -79,9 +81,11 @@ function delBib($name) {
                             <div class="mdl-card__actions mdl-card--border">
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="./bibliography?id=<?php echo($row['bid']); ?>"> Open </a>
                                 <div class="mdl-layout-spacer"></div>
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> Delete </a>
+                                  <form method="post" action="" id="delReq">
+                                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name="delBtn" type="submit" value=<?php echo($row['bid'])?>>Delete</button>
+                                  </form>
+                                </div>
                             </div>
-                        </div>
 
                     <?php } ?>
                 </div>
