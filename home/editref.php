@@ -6,6 +6,7 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
+$rid = $_GET["rid"];
 
 // $refQry_newRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$reftype', '$authors')";
 // $refSql_newRef = mysqli_query($conn,$refQry_newRef) or die("Could not create reference. ".mysqli_error($conn));
@@ -13,8 +14,7 @@ $bid = $_GET["id"];
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $refName = mysqli_real_escape_string($conn,$_POST['authors']);
   $refType = mysqli_real_escape_string($conn,$_POST['refType']);
-  $refYear = mysqli_real_escape_string($conn,$_POST['year']);
-  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors, year) VALUES ('$bid', '$refType', '$refName', '$refYear')";
+  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$refType', '$refName')";
   mysqli_query($conn,$refQry_createRef) or die("Could not create reference. $insert".mysqli_error($conn));
   header("Refresh:0 url=../home/bibliography?id=$bid");
 }
@@ -84,11 +84,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <option class="mdl-menu__item" value="Article">Article</option>
             </ul>
           </select>
-        </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="year"></input>
-              <label class="mdl-textfield__label" for="year">Year</label>
         </div>
         </div>
           <!-- MAIN CARD END -->
