@@ -67,7 +67,36 @@ $row = mysqli_fetch_assoc($refSql_getRef);
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="../home/bibliography?id=<?php echo($bid); ?>"> Go Back </a>
                     </div>
                     <div>
-                        <!-- Insert properties table here -->
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                            <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Type</th>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Authors</th>
+                            <th class="mdl-data-table__cell--non-numeric">Year</th>
+                            <th class="mdl-data-table__cell--non-numeric">Access Date</th>
+                            <th class="mdl-data-table__cell--non-numeric">URL</th>
+                            <th class="mdl-data-table__cell--non-numeric">Edition</th>
+                            <th class="mdl-data-table__cell--non-numeric">Place of Publication</th>
+                            <th class="mdl-data-table__cell--non-numeric">Publisher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refname']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refdate']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refurl']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refedition']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refpop']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refpub']); ?></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <br>
                     </div>
                     <div class="divCitation">
                         <div class="demo-card-event mdl-card mdl-shadow--2dp">
