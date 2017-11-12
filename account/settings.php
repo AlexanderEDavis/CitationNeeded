@@ -1,7 +1,8 @@
 <?php
 include('../conf/dbconnect.php');
 include('../conf/sescheck.php');
-  $email = $_SESSION['email'];
+
+$email = $_SESSION['email'];
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   //escape the username and password fields - avoids SQL injection
@@ -45,6 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           echo "Password Not Changed" . mysqli_error($conn);
       }
     }
+$delTrue = False;
 ?>
 
 <html>
@@ -93,11 +95,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <label class="mdl-textfield__label" for="confpass">Confirm password</label>
                     </div>
                     <br>
-                    <div class="mdl-card__actions mdl-card--border">
-                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password">
-                    </div>
-                    <br>
                     <div id="refButtons">
+                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password"></input>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account</button>
                         <dialog class="mdl-dialog">
                         <div class="mdl-dialog__content">
@@ -106,10 +105,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                           </p>
                         </div>
                         <div class="mdl-dialog__actions">
-                          <button type="button" class="mdl-button">Yes</button>
+                          <a href="delete.php"><button type="button" class="mdl-button">Yes</button></a>
                           <button type="button" class="mdl-button close">No</button>
                         </div>
                       </dialog>
+
                       <script>
                         var dialog = document.querySelector('dialog');
                         var showDialogButton = document.querySelector('#show-dialog');
