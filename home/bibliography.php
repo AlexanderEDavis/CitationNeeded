@@ -16,7 +16,7 @@ $refQry_getRef = "SELECT * FROM reference WHERE bibliography=$bid ORDER BY autho
 $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select results. ".mysqli_error($conn));
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $rid = mysqli_real_escape_string($conn,$_POST['delRef']);
+    $rid = mysqli_real_escape_string($conn,$_POST['btnDelRef']);
     $refQry_delRef = "DELETE FROM reference WHERE rid = $rid";
     mysqli_query($conn,$refQry_delRef) or die("Could not delete reference. ".mysqli_error($conn));
     header("Refresh:0");
