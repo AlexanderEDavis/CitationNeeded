@@ -56,3 +56,14 @@
     margin-top: 2%;
     color: white;
   }
+
+  #cardNewBib {
+      position: absolute;
+      left: 10%;
+      top: 10%;
+      width: 80%
+  }
+
+  .mdl-card{
+    min-height: 30px;
+  }
