@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </nav>
         </div>
             <main class="mdl-layout__content">
-                <div class="page-content" style="margin-left: 10%;">
+                <div class="page-content" style="margin-left: 5%;">
                   <!-- Simple Textfield -->
                   <form method="POST" id="passreset" action="">
                     <div class="mdl-textfield mdl-js-textfield">
