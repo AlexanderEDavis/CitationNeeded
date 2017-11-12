@@ -98,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     </div>
                     <br>
                     <div id="refButtons">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account!!!</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account</button>
                         <dialog class="mdl-dialog">
                         <div class="mdl-dialog__content">
                           <p>
