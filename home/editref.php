@@ -6,17 +6,15 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
+$rid = $_GET["rid"];
 
 // $refQry_newRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$reftype', '$authors')";
 // $refSql_newRef = mysqli_query($conn,$refQry_newRef) or die("Could not create reference. ".mysqli_error($conn));
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $refAuthors = mysqli_real_escape_string($conn,$_POST['authors']);
-  $refName = mysqli_real_escape_string($conn,$_POST['refName']);
+  $refName = mysqli_real_escape_string($conn,$_POST['authors']);
   $refType = mysqli_real_escape_string($conn,$_POST['refType']);
-  $refURL = mysqli_real_escape_string($conn,$_POST['url']);
-  $refYear = mysqli_real_escape_string($conn,$_POST['year']);
-  $refQry_createRef = "INSERT INTO reference (bibliography, refname, reftype, refurl, authors, year) VALUES ('$bid', '$refName', '$refType', '$refURL', '$refAuthors', '$refYear')";
+  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$refType', '$refName')";
   mysqli_query($conn,$refQry_createRef) or die("Could not create reference. $insert".mysqli_error($conn));
   header("Refresh:0 url=../home/bibliography?id=$bid");
 }
@@ -72,18 +70,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="refName"></input>
-              <label class="mdl-textfield__label" for="authors">Name</label>
-            </div>
-
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="name" name="authors"></input>
               <label class="mdl-textfield__label" for="authors">Author(s)</label>
-            </div>
-
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="year"></input>
-              <label class="mdl-textfield__label" for="year">Year</label>
             </div>
 
             <!-- Select with arrow-->
@@ -97,13 +85,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </ul>
           </select>
         </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="url"></input>
-              <label class="mdl-textfield__label" for="year">URL</label>
-        </div>
-
-        
         </div>
           <!-- MAIN CARD END -->
 
