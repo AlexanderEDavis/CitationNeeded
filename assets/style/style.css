@@ -82,10 +82,15 @@
 }
 
 .divCitation {
-  display: block;
+  display: inline-block;
+  float: left;
   width: 90%;
 }
 
 .citation {
   /* display: list-item; */
+}
+
+.divCitationTitle {
+  flex-direction: column;
 }
