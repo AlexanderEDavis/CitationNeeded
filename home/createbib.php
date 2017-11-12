@@ -63,12 +63,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       <div id="cardNewBib"  class="mdl-card mdl-shadow--4dp">
 
         <!-- LOGIN FORM START -->
-        <form method="post" action="" id="newBib">
+        <form method="POST" action="" id="newBib">
 
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="name">
+              <input class="mdl-textfield__input" type="text" id="name" name="name"></input>
               <label class="mdl-textfield__label" for="name">Bibliography Name</label>
             </div>
 
@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <option class="mdl-menu__item" value="Aston Harvard">Aston Harvard</option>
                 <option class="mdl-menu__item" value="APA">APA</option>
             </ul>
-          </input>
+          </select>
         </div>
         </div>
           <!-- MAIN CARD END -->

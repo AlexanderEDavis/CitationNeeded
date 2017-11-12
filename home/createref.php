@@ -11,11 +11,11 @@ $bid = $_GET["id"];
 // $refSql_newRef = mysqli_query($conn,$refQry_newRef) or die("Could not create reference. ".mysqli_error($conn));
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $refName = mysqli_real_escape_string($conn,$_POST['name']);
+  $refName = mysqli_real_escape_string($conn,$_POST['authors']);
   $refType = mysqli_real_escape_string($conn,$_POST['refType']);
-  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$reftype', '$authors')";
-  mysqli_query($conn,$bibQry_createBib) or die("Could not create reference. ".mysqli_error($conn));
-  header("Refresh:0 url=../bibliography?id=<?php echo($bid) ?>");
+  $refQry_createRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$refType', '$refName')";
+  mysqli_query($conn,$refQry_createRef) or die("Could not create reference. $insert".mysqli_error($conn));
+  header("Refresh:0 url=../home/bibliography?id=$bid");
 }
 
 ?>
@@ -64,12 +64,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       <div id="cardNewRef"  class="mdl-card mdl-shadow--4dp">
 
         <!-- LOGIN FORM START -->
-        <form method="post" action="" id="newRef">
+        <form method="POST" action="" id="newRef">
 
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="name" name="authors">
+              <input class="mdl-textfield__input" type="text" id="name" name="authors"></input>
               <label class="mdl-textfield__label" for="authors">Author(s)</label>
             </div>
 
@@ -78,11 +78,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <select class="mdl-textfield__input" type="text" id="refType" value="Belarus" name="refType" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                <option class="mdl-menu__item" value="BCU Harvard">Website</option>
-                <option class="mdl-menu__item" value="Aston Harvard">Book</option>
-                <option class="mdl-menu__item" value="APA">Article</option>
+                <option class="mdl-menu__item" value="Website">Website</option>
+                <option class="mdl-menu__item" value="Book">Book</option>
+                <option class="mdl-menu__item" value="Article">Article</option>
             </ul>
-          </input>
+          </select>
         </div>
         </div>
           <!-- MAIN CARD END -->
