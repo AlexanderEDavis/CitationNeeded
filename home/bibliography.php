@@ -7,12 +7,12 @@ require('../conf/sescheck.php');
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
 
-// $viewQry = "SELECT * FROM bibliographies WHERE bid = $bid AND user = '$email'";
-// $bibSql_getBib = mysqli_query($conn,$viewQry) or die("You do not have permissions to read this bibliography.");
-// $row = mysqli_fetch_assoc($bibSql_getBib);
-// $error = "You do not have permissions to read this bibliography.";
+$viewQry = "SELECT * FROM bibliographies WHERE bid = $bid AND user = '$email'";
+$bibSql_getBib = mysqli_query($conn,$viewQry) or die("You do not have permissions to read this bibliography.");
+$row = mysqli_fetch_assoc($bibSql_getBib);
+$error = "You do not have permissions to read this bibliography.";
 
-$refQry_getRef = "SELECT * FROM references WHERE bibliography=$bid ORDER BY authors ASC";
+$refQry_getRef = "SELECT * FROM reference WHERE bibliography=$bid ORDER BY authors ASC";
 $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select results. ".mysqli_error($conn));
 
 ?>
@@ -63,15 +63,15 @@ $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select res
 
                     <div id="refButtons">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Add</button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button>
                     </div>
                     <div id="refTable">
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
                             <tr>
                             <th class="mdl-data-table__cell--non-numeric">Type</th>
-                            <th class="mdl-data-table__cell--non-numeric">Author</th>
+                            <th class="mdl-data-table__cell--non-numeric">Authors</th>
+                            <th class="mdl-data-table__cell--non-numeric">Edit</th>
+                            <th class="mdl-data-table__cell--non-numeric">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +81,8 @@ $refSql_getRef = mysqli_query($conn,$refQry_getRef) or die("Could not select res
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
