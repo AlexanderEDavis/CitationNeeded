@@ -56,3 +56,11 @@
     margin-top: 2%;
     color: white;
   }
+
+#refButtons, #refTable {
+  margin: 20px;
+}
+
+#refTable {
+  width: 90%;
+}
