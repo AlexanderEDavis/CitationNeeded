@@ -57,6 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title">Account Settings: <?php echo($email); ?></span>
                     <div class="mdl-layout-spacer"></div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
                         <div class="mdl-textfield__expandable-holder">
@@ -67,7 +68,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Citation Needed</span>
-            <span><h6><?php echo($email); ?></h6></span>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="../home">Home</a>
                 <a class="mdl-navigation__link" href="../account/settings">Account Settings</a>
@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     </div>
                     <br>
                     <div class="mdl-card__actions mdl-card--border">
-                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Confirm">
+                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password">
                     </div>
                     <br>
                     <div id="refButtons">
@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         <dialog class="mdl-dialog">
                         <div class="mdl-dialog__content">
                           <p>
-                            Are you sure you want to delete your account:
+                            Are you sure you want to delete your account?
                           </p>
                         </div>
                         <div class="mdl-dialog__actions">
