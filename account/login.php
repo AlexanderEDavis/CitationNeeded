@@ -39,9 +39,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           $_SESSION['email'] = $email;
           header('location:../home');
       }
-      else{
-          echo "Not authenticated";
-      }
 
   //Count the number of rows
   $numrows = mysqli_num_rows($sql);
