@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <title>Login ~ Citation Needed</title>
+        <title>Reset Password ~ Citation Needed</title>
     </head>
     <body>
             <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

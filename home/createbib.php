@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <head>
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <title>Home ~ Citation Needed</title>
+        <title>Create Bibliography ~ Citation Needed</title>
     </head>
     <body>
 
