@@ -8,7 +8,7 @@ $email = $_SESSION['email'];
 $bid = $_GET["id"];
 $rid = $_GET["rid"];
 
-$viewQry = "SELECT * FROM reference WHERE rid = $rid AND user = '$email'";
+$viewQry = "SELECT * FROM reference WHERE rid = $rid";
 $refSql_getRef = mysqli_query($conn,$viewQry) or die("You do not have permissions to read this bibliography.");
 $row = mysqli_fetch_assoc($refSql_getRef);
 
@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($refSql_getRef);
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">View Reference</span>
+                    <span class="mdl-layout-title">View Reference: <em><?php echo($row['refname']); ?></em></span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
                           <!-- <a class="mdl-navigation__link" href="#">Create Bibliography</a> -->
@@ -62,10 +62,20 @@ $row = mysqli_fetch_assoc($refSql_getRef);
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-                    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                    <div id="refButtons">
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="../home/bibliography?id=<?php echo($bid); ?>"> Go Back </a>
+                    </div>
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
                     <div class="mdl-card__title mdl-card--expand">
                         <h4>In-Text Citation:</h4>
-                        <p> </p>
+                        <p class="citation">(<?php echo($row['authors']) ?>, <?php echo($row['year']); ?>)</p>
+                    </div>
+                    </div>
+
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp divCitation">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h4>Bibliography Citation:</h4>
+                        <p class="citation"><?php echo($row['authors']) ?> (<?php echo($row['year']); ?>)</p>
                     </div>
                     </div>
                 </div>

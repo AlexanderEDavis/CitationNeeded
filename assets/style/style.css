@@ -80,3 +80,12 @@
 #passreset {
   margin: 10px;
 }
+
+.divCitation {
+  display: block;
+  width: 90%;
+}
+
+.citation {
+  /* display: list-item; */
+}
