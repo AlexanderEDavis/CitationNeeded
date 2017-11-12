@@ -28,7 +28,30 @@
             </nav>
         </div>
             <main class="mdl-layout__content">
-                <div class="page-content"><!-- Your content goes here --></div>
+                <div class="page-content">
+                  <!-- Simple Textfield -->
+                  <form id="passreset" action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" type="text" id="sample1">
+                      <label class="mdl-textfield__label" for="sample1">Current password...</label>
+                    </div>
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample2">
+                    <label class="mdl-textfield__label" for="sample1">New password...</label>
+                    </div>
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample1">Confirm password...</label>
+                    </div>
+                    <br>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Confirm">
+                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Cancel">
+                    </div>
+                  </form>
+                </div>
             </main>
         </div>
     </body>
