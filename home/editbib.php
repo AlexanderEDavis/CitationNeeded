@@ -12,7 +12,7 @@ $bibSql_getBib = mysqli_query($conn,$viewQry) or die("You do not have permission
 $row = mysqli_fetch_assoc($bibSql_getBib);
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $bibName = mysqli_real_escape_string($conn,$_POST['name']);
+    $bibName = mysqli_real_escape_string($conn,$_POST['bibname']);
     $bibType = mysqli_real_escape_string($conn,$_POST['bibtype']);
     $bibQry_editBib = "UPDATE bibliographies SET name = '$bibName', bibtype = '$bibType' WHERE bid='$bid'";
     mysqli_query($conn,$bibQry_editBib) or die("Could not edit bibliography. $insert".mysqli_error($conn));
