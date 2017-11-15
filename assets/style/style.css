@@ -51,6 +51,8 @@ body .mdl-button {
   body .mdl-button__ripple-container {
     padding: 5px;
     float: left;
+    text-align: center;
+    vertical-align: middle;
   }
 
   a .mdl-js-ripple-effect {
@@ -121,4 +123,9 @@ body .mdl-button {
   float: left;
   align-self: center;
   width: 90%;
+}
+
+#footer a {
+  text-decoration: none;
+  color: white;
 }

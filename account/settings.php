@@ -53,6 +53,7 @@ $delTrue = False;
     <head>
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
         <title>Account Settings ~ Citation Needed</title>
     </head>
     <body>
@@ -127,6 +128,7 @@ $delTrue = False;
                   </form>
                 </div>
             </main>
+            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>

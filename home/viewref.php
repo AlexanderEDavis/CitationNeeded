@@ -30,6 +30,7 @@ $row = mysqli_fetch_assoc($refSql_getRef);
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <title><?php echo($row['refname']); ?> ~ Citation Needed</title>
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
     </head>
     <body>
 
@@ -123,6 +124,7 @@ $row = mysqli_fetch_assoc($refSql_getRef);
                     </div>
                 </div>
             </main>
+            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>

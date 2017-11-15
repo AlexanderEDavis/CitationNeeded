@@ -32,6 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <title>Home ~ Citation Needed</title>
+        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
     </head>
     <body>
 
@@ -102,6 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     <?php } ?>
                 </div>
             </main>
+            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>

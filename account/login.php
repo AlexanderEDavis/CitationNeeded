@@ -61,7 +61,7 @@ if(isset($_SESSION['email'])){
 <head>
   <title>Login ~ Citation Needed</title>
   <link rel="stylesheet" href="../assets/style/style.css">
-  <!-- <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon"> -->
+  <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
@@ -149,7 +149,9 @@ if(isset($_SESSION['email'])){
 
       </div>
     </main>
+    <?php include("../scripts/footer.php"); ?>
   </div>
+
 
 </body>
 
