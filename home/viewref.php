@@ -122,9 +122,9 @@ $row = mysqli_fetch_assoc($refSql_getRef);
                         </div>
                         </div>
                     </div>
+                    <?php include("../scripts/footer.php"); ?>
                 </div>
             </main>
-            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>

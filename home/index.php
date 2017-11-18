@@ -99,9 +99,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             </div>
                           </div>
                     <?php } ?>
+                    <?php include("../scripts/footer.php"); ?>
                 </div>
             </main>
-            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>
