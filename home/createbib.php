@@ -95,10 +95,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
       </form>
         <!-- LOGIN FORM END -->
-                  </div>
-                  <?php include("../scripts/footer.php"); ?>
+                </div>
                 </div>
             </main>
+            <?php include("../scripts/footer.php"); ?>
         </div>
     </body>
 </html>
