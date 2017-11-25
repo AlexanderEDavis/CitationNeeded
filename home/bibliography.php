@@ -86,7 +86,6 @@ if ($row['name'] == ""){
                         </ul>
 
                     </div>
-                  <?php } ?>
                     <div id="refTable">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
@@ -104,8 +103,6 @@ if ($row['name'] == ""){
                         <tbody>
 
                             <?php
-                            if ($row['name'] == ""){
-                            }else{
                             while($row = mysqli_fetch_assoc($refSql_getRef)) {?>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
@@ -121,10 +118,11 @@ if ($row['name'] == ""){
                                         </form>
                                     </td>
                                 </tr>
-                            <?php }} ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                     </div>
+                  <?php } ?>
                 </div>
             </main>
             <?php include("../scripts/footer.php"); ?>
