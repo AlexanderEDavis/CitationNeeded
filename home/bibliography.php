@@ -75,15 +75,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a>
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a> -->
 
-                        <button id="addRefMenu" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--icon">
+                        <button id="addRefMenu" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                           <p>Add</p>
                         </button>
 
                         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="addRefMenu">
-                          <li style="text-decoration: none;" class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"> Add Website </a></li>
-                          <li style="text-decoration: none;" class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a></li>
-                          <li style="text-decoration: none;" class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a></li>
-                          <li style="text-decoration: none;" class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a></li>
+                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"> Add Website </a></li>
+                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a></li>
+                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a></li>
+                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a></li>
                         </ul>
 
                     </div>

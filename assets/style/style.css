@@ -134,3 +134,7 @@ body .mdl-button {
   padding: 16px 8px;
   z-index: 150;
 }
+
+#refButtons li {
+  text-decoration: none;
+}
