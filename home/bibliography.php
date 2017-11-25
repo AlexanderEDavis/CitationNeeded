@@ -4,14 +4,6 @@
 require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
 
-$pageTitle = "";
-if ($row['name'] == ""){
-  echo $error;
-  $pageTitle = "Permission Error";
-} else {
-  $pageTitle = $row['name'];
-}
-
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
 
@@ -28,6 +20,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $refQry_delRef = "DELETE FROM reference WHERE rid = $rid";
     mysqli_query($conn,$refQry_delRef) or die("Could not delete reference. ".mysqli_error($conn));
     header("Refresh:0");
+}
+
+$pageTitle = "";
+if ($row['name'] == ""){
+  echo $error;
+  $pageTitle = "Permission Error";
+} else {
+  $pageTitle = $row['name'];
 }
 
 ?>
