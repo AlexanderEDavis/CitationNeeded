@@ -7,8 +7,9 @@
     <a href="#" target="_blank">Lyall Lyall,</a>
     <a href="#" target="_blank">and Kiefah Harry.</a>
     </div>
-    <br>
-    <ul style="float: left;" class="mdl-mini-footer__link-list">
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <ul class="mdl-mini-footer__link-list">
     <li><a href="#">Help</a></li>
     <li><a href="#">Privacy & Terms</a></li>
     </ul>

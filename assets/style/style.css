@@ -129,3 +129,8 @@ body .mdl-button {
   text-decoration: none;
   color: white;
 }
+
+.mdl-mini-footer {
+  padding: 16px 8px;
+  z-index: 150;
+}
