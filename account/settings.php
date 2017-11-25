@@ -81,7 +81,7 @@ $delTrue = False;
                 <div class="page-content">
                   <!-- Simple Textfield -->
                   <form style="margin-left: 3%;" method="POST" id="passreset" action="">
-                    <h3>Change Password</h3>
+                    <h4>Change Password</h4>
                     <div class="mdl-textfield mdl-js-textfield">
                       <input class="mdl-textfield__input" type="password" name="currentpass" id="currentpass">
                       <label class="mdl-textfield__label" for="currentpass">Current password</label>
@@ -100,9 +100,9 @@ $delTrue = False;
                     <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password"></input>
                   </form>
 
-                    <div id="deleteAccount">
+                    <div id="deleteAccount" style="margin-left: 3%;">
                       <br>
-                      <h3>Delete Account</h3>
+                      <h4>Delete Account</h4>
                       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account</button>
                     </div>
 
