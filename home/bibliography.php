@@ -24,7 +24,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 $pageTitle = "";
 if ($row['name'] == ""){
-  echo $error;
   $pageTitle = "Permission Error";
 } else {
   $pageTitle = $row['name'];
@@ -66,7 +65,8 @@ if ($row['name'] == ""){
         </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
-
+                  <?php if ($row['name'] == ""){
+                  }else{ ?>
                     <div id="refButtons">
                         <button id="addRefMenu" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                           <p>Add</p>
@@ -86,6 +86,7 @@ if ($row['name'] == ""){
                         </ul>
 
                     </div>
+                  <?php } ?>
                     <div id="refTable">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
@@ -103,6 +104,8 @@ if ($row['name'] == ""){
                         <tbody>
 
                             <?php
+                            if ($row['name'] == ""){
+                            }else{
                             while($row = mysqli_fetch_assoc($refSql_getRef)) {?>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['reftype']); ?></td>
@@ -110,15 +113,15 @@ if ($row['name'] == ""){
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['authors']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['year']); ?></td>
                                     <td class="mdl-data-table__cell--non-numeric"><?php echo($row['refdate']); ?></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><a href="../home/viewref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button style="margin-top: 11px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View More</button></a></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><a href="../home/editref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button style="margin-top: 11px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></a></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><a href="../home/viewref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">View More</button></a></td>
+                                    <td class="mdl-data-table__cell--non-numeric"><a href="../home/editref?id=<?php echo($bid);?>&rid=<?php echo($row['rid']); ?>"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button></a></td>
                                     <td class="mdl-data-table__cell--non-numeric">
                                         <form method="post" action="" id="delRef">
                                             <button style="margin-top: 11px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" name="btnDelRef" type="submit" value=<?php echo($row['rid'])?>>Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php }} ?>
                         </tbody>
                     </table>
                     </div>

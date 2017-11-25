@@ -12,7 +12,7 @@
     <ul class="mdl-mini-footer__link-list">
     <li><a href="#">Help</a></li>
     <li><a href="#">Privacy & Terms</a></li>
-    <li>Version 0.3.7</li>
+    <li>Version 0.3.8</li>
     </ul>
 </div>
 </footer>
