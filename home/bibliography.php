@@ -4,6 +4,14 @@
 require('../conf/dbconnect.php');
 require('../conf/sescheck.php');
 
+$pageTitle = "";
+if ($row['name'] == ""){
+  echo $error;
+  $pageTitle = "Permission Error";
+} else {
+  $pageTitle = $row['name'];
+}
+
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
 
@@ -29,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../assets/style/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <title><?php echo $row['name']; ?> ~ Citation Needed</title>
+        <title><?php echo $pageTitle; ?> ~ Citation Needed</title>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -45,17 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     ?></span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                          <!-- <a class="mdl-navigation__link" href="#">Create Bibliography</a> -->
-                          <!-- <button id="btnNewBib" class="mdl-button mdl-button--raised mdl-js-button dialog-button">New Bibliography</button> -->
-                        </nav>
-                    <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-                        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                            <i class="material-icons">search</i>
-                        </label>
-                        <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
-                        </div>
-                    </div> -->
+                    </nav>
                 </div>
             </header>
         <div class="mdl-layout__drawer">
@@ -70,20 +68,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="page-content">
 
                     <div id="refButtons">
-                        <!-- <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"> Add Website </a>
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a>
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a>
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a> -->
-
                         <button id="addRefMenu" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                           <p>Add</p>
                         </button>
 
                         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="addRefMenu">
-                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"> Add Website </a></li>
-                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a></li>
-                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a></li>
-                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a></li>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"><li class="mdl-menu__item"> Add Article </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=blog"><li class="mdl-menu__item"> Add Blog </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"><li class="mdl-menu__item"> Add Book </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=email"><li class="mdl-menu__item"> Add Email </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"><li class="mdl-menu__item"> Add Interview </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=pdf"><li class="mdl-menu__item"> Add PDF </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=presentation"><li class="mdl-menu__item"> Add Presentation </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=report"><li class="mdl-menu__item"> Add Report </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=software"><li class="mdl-menu__item"> Add Software </li></a>
+                          <a href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"><li class="mdl-menu__item"> Add Website </li></a>
                         </ul>
 
                     </div>
