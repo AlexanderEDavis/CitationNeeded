@@ -70,7 +70,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="page-content">
 
                     <div id="refButtons">
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>"> Add </a>
+                        <!-- <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=website"> Add Website </a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=book"> Add Book </a>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="./createref?id=<?php echo($row['bid']); ?>&reftype=interview"> Add Interview </a> -->
+
+                        <button id="addRefMenu" class="mdl-button mdl-js-button mdl-button--icon">
+                          <p>Add</p>
+                        </button>
+
+                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="addRefMenu">
+                          <li class="mdl-menu__item">Some Action</li>
+                          <li class="mdl-menu__item"><a href="./createref?id=<?php echo($row['bid']); ?>&reftype=article"> Add Article </a></li>
+                        </ul>
+
                     </div>
                     <div id="refTable">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
