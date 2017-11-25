@@ -138,3 +138,7 @@ body .mdl-button {
 #refButtons li {
   text-decoration: none;
 }
+
+button {
+  text-align: center;
+}
