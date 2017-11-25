@@ -79,8 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <label for="refType" class="mdl-textfield__label">Referencing Method</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                 <option class="mdl-menu__item" value="BCU Harvard">BCU Harvard</option>
-                <option class="mdl-menu__item" value="Aston Harvard">Aston Harvard</option>
-                <option class="mdl-menu__item" value="APA">APA</option>
+                <option class="mdl-menu__item" value="NONE">More Coming Soon</option>
             </ul>
           </select>
         </div>
