@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <label for="refType" class="mdl-textfield__label">Bibliography Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                 <option class="mdl-menu__item" value="BCU Harvard" <?php if($row['bibtype']=="BCU Harvard"){ echo 'selected'; }?> >BCU Harvard</option>
-                <option class="mdl-menu__item" value="NONE" <?php if($row['bibtype']=="NONE"){ echo 'selected'; }?>>More Coming Soon</option>
+                <option class="mdl-menu__item" value="BCU Harvard">More Coming Soon</option>
             </ul>
           </select>
         </div>
