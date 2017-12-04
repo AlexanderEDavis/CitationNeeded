@@ -6,6 +6,7 @@ require('../conf/sescheck.php');
 
 $email = $_SESSION['email'];
 $bid = $_GET["id"];
+$refType = $_GET["reftype"];
 
 // $refQry_newRef = "INSERT INTO reference (bibliography, reftype, authors) VALUES ('$bid', '$reftype', '$authors')";
 // $refSql_newRef = mysqli_query($conn,$refQry_newRef) or die("Could not create reference. ".mysqli_error($conn));
@@ -13,7 +14,7 @@ $bid = $_GET["id"];
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $refAuthors = mysqli_real_escape_string($conn,$_POST['authors']);
   $refName = mysqli_real_escape_string($conn,$_POST['refName']);
-  $refType = mysqli_real_escape_string($conn,$_POST['refType']);
+  // $refType = mysqli_real_escape_string($conn,$_POST['refType']);
   $refURL = mysqli_real_escape_string($conn,$_POST['url']);
   $refYear = mysqli_real_escape_string($conn,$_POST['year']);
   $refDate = mysqli_real_escape_string($conn,$_POST['refdate']);
@@ -76,6 +77,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
           <!-- MAIN CARD START -->
         <div class="mdl-card__supporting-text">
+
+            <div>
+              <h4> Creating Reference Type: <?php echo($refType); ?> </h4>
+            </div>
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="name" name="refName"></input>
               <label class="mdl-textfield__label" for="authors">Name</label>
@@ -92,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </div>
 
             <!-- Select with arrow-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+        <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
             <select class="mdl-textfield__input" type="text" id="refType" value="Belarus" name="refType" readonly tabIndex="-1">
             <label for="refType" class="mdl-textfield__label">Source Type</label>
             <ul for="refType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
@@ -101,7 +107,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <option class="mdl-menu__item" value="Article">Article</option>
             </ul>
           </select>
-        </div>
+        </div> -->
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="name" name="url"></input>

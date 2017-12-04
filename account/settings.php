@@ -81,6 +81,7 @@ $delTrue = False;
                 <div class="page-content">
                   <!-- Simple Textfield -->
                   <form style="margin-left: 3%;" method="POST" id="passreset" action="">
+                    <h4>Change Password</h4>
                     <div class="mdl-textfield mdl-js-textfield">
                       <input class="mdl-textfield__input" type="password" name="currentpass" id="currentpass">
                       <label class="mdl-textfield__label" for="currentpass">Current password</label>
@@ -96,36 +97,42 @@ $delTrue = False;
                     <label class="mdl-textfield__label" for="confpass">Confirm password</label>
                     </div>
                     <br>
-                    <div id="refButtons">
-                      <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password"></input>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account</button>
-                        <dialog class="mdl-dialog">
-                        <div class="mdl-dialog__content">
-                          <p>
-                            Are you sure you want to delete your account?
-                          </p>
-                        </div>
-                        <div class="mdl-dialog__actions">
-                          <a href="delete.php"><button type="button" class="mdl-button">Yes</button></a>
-                          <button type="button" class="mdl-button close">No</button>
-                        </div>
-                      </dialog>
-
-                      <script>
-                        var dialog = document.querySelector('dialog');
-                        var showDialogButton = document.querySelector('#show-dialog');
-                        if (! dialog.showModal) {
-                          dialogPolyfill.registerDialog(dialog);
-                        }
-                        showDialogButton.addEventListener('click', function() {
-                          dialog.showModal();
-                        });
-                        dialog.querySelector('.close').addEventListener('click', function() {
-                          dialog.close();
-                        });
-                      </script>
-                    </div>
+                    <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" type="submit" value="Change Password"></input>
                   </form>
+
+                    <div id="deleteAccount" style="margin-left: 3%;">
+                      <br>
+                      <h4>Delete Account</h4>
+                      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="show-dialog" type="button" class="mdl-button">Delete my account</button>
+                    </div>
+
+                    <dialog class="mdl-dialog">
+                    <div class="mdl-dialog__content">
+                      <p>
+                        Are you sure you want to delete your account?
+                      </p>
+                    </div>
+                    <div class="mdl-dialog__actions">
+                      <a href="delete.php"><button type="button" class="mdl-button">Yes</button></a>
+                      <button type="button" class="mdl-button close">No</button>
+                    </div>
+                  </dialog>
+
+                  <script>
+                    var dialog = document.querySelector('dialog');
+                    var showDialogButton = document.querySelector('#show-dialog');
+                    if (! dialog.showModal) {
+                      dialogPolyfill.registerDialog(dialog);
+                    }
+                    showDialogButton.addEventListener('click', function() {
+                      dialog.showModal();
+                    });
+                    dialog.querySelector('.close').addEventListener('click', function() {
+                      dialog.close();
+                    });
+                  </script>
+
+
                 </div>
             </main>
             <?php include("../scripts/footer.php"); ?>
