@@ -7,5 +7,6 @@
   </head>
   <body>
     <?php include("../scripts/footer.php"); ?>
+    <p>BANTER!</p>
   </body>
 </html>
