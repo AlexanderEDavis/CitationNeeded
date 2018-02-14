@@ -10,9 +10,10 @@
   </div>
   <div class="mdl-mini-footer__right-section">
     <ul class="mdl-mini-footer__link-list">
-    <li><a href="#">Help</a></li>
-    <li><a href="#">Privacy & Terms</a></li>
-    <li>Version 0.3.8</li>
+    <li><a href="https://airtable.com/shrRg7HTt3mvwqXmn">Report a Bug</a></li>
+    <li><a href="/help.php">Help</a></li>
+    <li><a href="/privacy.php">Privacy & Terms</a></li>
+    <li>Version 0.3.9</li>
     </ul>
 </div>
 </footer>
